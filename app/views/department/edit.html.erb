@@ -5,11 +5,9 @@
       <%= render 'shared/validate_dpm' %>
       <p>Tên: <%= f.text_field 'name', class: 'form-control' %></p>
       <p>Mô tả: <br/>
-
         <%= f.text_area 'description', class: 'form-control' %></p>
       <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
     <% end %>
-
     <%= link_to 'Quay lại', {:action => 'list' } %>
   </div>
 </div>
