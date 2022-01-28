@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_151249) do
+ActiveRecord::Schema.define(version: 2022_01_28_043942) do
 
   create_table "departments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 20
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2022_01_27_151249) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "project_id"
     t.integer "employee_id"
+    t.integer "is_leader"
     t.index ["employee_id"], name: "index_employee_projects_on_employee_id"
     t.index ["project_id"], name: "index_employee_projects_on_project_id"
   end
@@ -45,12 +46,11 @@ ActiveRecord::Schema.define(version: 2022_01_27_151249) do
     t.string "address", limit: 50
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "rank_id"
     t.integer "department_id"
     t.integer "user_id"
     t.integer "role_id"
+    t.integer "is_pm"
     t.index ["department_id"], name: "index_employees_on_department_id"
-    t.index ["rank_id"], name: "index_employees_on_rank_id"
     t.index ["role_id"], name: "index_employees_on_role_id"
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
@@ -62,12 +62,6 @@ ActiveRecord::Schema.define(version: 2022_01_27_151249) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "department_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
-  end
-
-  create_table "ranks", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "name", limit: 20
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
