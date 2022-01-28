@@ -1,0 +1,15 @@
+<h1>Cập nhật phòng ban</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @dpm, :url =>{:action => "update", :id =>@dpm} do |f| %>
+      <%= render 'shared/validate_dpm' %>
+      <p>Tên: <%= f.text_field 'name', class: 'form-control' %></p>
+      <p>Mô tả: <br/>
+
+        <%= f.text_area 'description', class: 'form-control' %></p>
+      <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
+    <% end %>
+
+    <%= link_to 'Quay lại', {:action => 'list' } %>
+  </div>
+</div>

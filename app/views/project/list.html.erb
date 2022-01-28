@@ -1,0 +1,27 @@
+<% if @projects.blank? %>
+  <p>Hiện tại không có dự án nào.</p>
+<% else %>
+  <p style="color: blue">Hiện tại đang có <%= @projects.length %> dự án:</p>
+  <table class="table table-striped">
+    <tr>
+      <th>STT</th>
+      <th>Tên</th>
+      <th>Mô tả</th>
+      <th>Phòng ban đảm nhận</th>
+      <th colspan="2">Tuỳ chọn</th>
+    </tr>
+    <% @projects.each do |c| %>
+      <tr>
+        <td><%= c.id %></td>
+        <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
+        <td><%= c.description %></td>
+        <td><%= c.department_id %></td>
+        <td>
+          <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
+          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<p><%= link_to "Thêm dự án", {:action => 'new' }%></p>
