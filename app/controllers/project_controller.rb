@@ -1,4 +1,5 @@
 class ProjectController < ApplicationController
+  layout 'dashboard'
   def list
     @projects = Project.all
     @dpms = Department.all

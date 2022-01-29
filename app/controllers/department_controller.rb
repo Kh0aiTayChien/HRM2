@@ -1,4 +1,5 @@
 class DepartmentController < ApplicationController
+  layout 'dashboard'
   def list
     @dpms = Department.all
   end

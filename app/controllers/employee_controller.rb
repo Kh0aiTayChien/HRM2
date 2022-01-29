@@ -1,4 +1,5 @@
 class EmployeeController < ApplicationController
+  layout 'dashboard'
   def index
   end
 
