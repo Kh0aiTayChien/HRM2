@@ -51,4 +51,8 @@ class DepartmentController < ApplicationController
       format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
     end
   end
+
+  def show_project
+    @prj = Project.find(params[:id])
+  end
 end

@@ -6,6 +6,7 @@ class ProjectController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @dpmss = Department.all
   end
 
   def new

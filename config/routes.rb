@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-  get 'project/new'
-  get 'project/edit'
-  get 'project/show'
-  get 'project/list'
   devise_for :users
   root "employee#index"
   as :user do
     get "sign_in" => "devise/sessions#new"
     post "sign_in" => "devise/sessions#create"
-    delete "sign_out" => "devise/sessions#destroy"
+    get "sign_out" => "devise/sessions#destroy"
   end
 
   get 'dpms/list' => 'department#list'
@@ -28,4 +24,13 @@ Rails.application.routes.draw do
   get 'prj/update' => 'project#update'
   get 'prj/edit' => 'project#edit'
   get 'prj/delete' => 'project#delete'
+
+  get 'epl/list' => 'employee#list'
+  get 'epl/new' => 'employee#new'
+  post 'epl/create' => 'employee#create'
+  get 'epl/show' => 'employee#show'
+  patch 'epl/update' => 'employee#update'
+  get 'epl/update' => 'employee#update'
+  get 'epl/edit' => 'employee#edit'
+  get 'epl/delete' => 'employee#delete'
 end

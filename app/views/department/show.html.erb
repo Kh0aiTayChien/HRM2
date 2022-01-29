@@ -1,5 +1,13 @@
 <h1><%= @dpm.name %></h1>
 <p>
-  <strong>Mô tả: </strong> <%= @dpm.description %><br />
+  <strong>Mô tả: </strong> <%= @dpm.description %><br/>
+  <strong>Các dự án hiện có: </strong>
+
+  <% @dpm.projects.each do |c| %>
+    <li><%= c.name %></li>
+  <% end %>
+
 </p>
-<%= link_to 'Quay lại', {:action => 'list'} %>
+
+
+<%= link_to 'Quay lại', { :action => 'list' } %>
