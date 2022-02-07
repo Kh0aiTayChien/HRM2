@@ -2,17 +2,14 @@ class ProjectController < ApplicationController
   layout 'dashboard'
   def list
     @projects = Project.all
-    @dpms = Department.all
   end
 
   def show
     @project = Project.find(params[:id])
-    @dpmss = Department.all
   end
 
   def new
     @project = Project.new
-    @dpms = Department.all
   end
 
   def create

@@ -1,0 +1,16 @@
+<h1>Cập nhật thông tin nhân viên</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @employee, :url => { :action => "update", :id => @employee } do |f| %>
+      <%#= render 'shared/validate_project' %>
+      <p>Tên: <%= f.text_field 'name', class: 'form-control' %></p>
+      <p>Tuổi: <%= f.text_field 'age', class: 'form-control' %></p>
+      <p>Ngày sinh: <%= f.text_field 'birthday', class: 'form-control' %></p>
+      <p>Địa chỉ: <%= f.text_field 'address', class: 'form-control' %></p>
+      <p>Email: <%= f.collection_select :user_id, User.all, :id, :email %></p>
+      <p>Role: <%= f.collection_select :role_id, Role.all, :id, :name %></p>
+      <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
+    <% end %>
+    <%= link_to 'Quay lại', { :action => 'list' } %>
+  </div>
+</div>

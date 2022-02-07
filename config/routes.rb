@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get 'epl/update' => 'employee#update'
       get 'epl/edit' => 'employee#edit'
       get 'epl/delete' => 'employee#delete'
+      get 'epl/info' => 'employee#info'
     end
 
     unauthenticated do

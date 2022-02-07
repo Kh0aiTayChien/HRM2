@@ -1,28 +1,32 @@
 <!--<p id="notice"><%#= notice %></p>-->
 <% if @employees.blank? %>
-  <p>Hiện tại không có phòng ban nào hoạt động.</p>
+  <p>Hiện tại không có nhân viên.</p>
 <% else %>
-  <p style="color: blue">Hiện tại đang có <%= @employees.length %> phòng ban hoạt động:</p>
+  <p style="color: blue">Hiện tại đang có <%= @employees.length %> nhân viên:</p>
   <table class="table table-striped">
     <tr>
       <th>STT</th>
       <th>Tên</th>
-      <th>Mô tả</th>
+      <th>Role</th>
+      <th>Email</th>
       <th colspan="2">Tuỳ chọn</th>
     </tr>
     <% @employees.each do |c| %>
       <tr>
         <td><%= c.id %></td>
         <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
-        <td><%= c.age %></td>
-        <td><%= c.address %></td>
-        <td><%= c.birthday %></td>
+        <td><%= c.role.name %></td>
+        <% if c.user.email.blank? %>
+        <td>khong co</td>
+          <% else %>
+          <td><%= c.user.email %></td>
+          <% end %>
         <td>
-          <%#= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <%#= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+          <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
+          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
         </td>
       </tr>
     <% end %>
   </table>
 <% end %>
-<p><%= link_to "Thêm phòng ban", {:action => 'new' }%></p>
+<p><%= link_to "Thêm nhân viên", {:action => 'new' }%></p>

@@ -1,0 +1,11 @@
+<h1><%= @employee.name %></h1>
+
+<p>
+  <strong>Tuổi: </strong> <%= @employee.age %><br />
+  <strong>Ngày sinh: </strong> <%= @employee.birthday %><br/>
+  <strong>Địa chỉ: </strong> <%= @employee.address %><br/>
+  <strong>Ngày vào công ty: </strong> <%= @employee.created_at %><br/>
+</p>
+
+
+<%= link_to 'Quay lại', {:action => 'list'} %>

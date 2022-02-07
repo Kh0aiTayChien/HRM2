@@ -9,6 +9,7 @@
       <%= text_field 'projects', 'description', class: 'form-control' %>
       <label for = "3">Phòng ban đảm nhận</label>:
       <%= collection_select(:projects, :department_id, Department.all, :id, :name, prompt: true) %>
+      <br>
       <%= submit_tag "Lưu", class: 'btn btn-primary' %>
     <% end -%>
     <%= link_to 'Quay lại', { :action => 'list' } %>

@@ -3,6 +3,9 @@ class EmployeeController < ApplicationController
   def index
   end
 
+  def info
+  end
+
   def list
     @employees = Employee.all
   end
@@ -27,33 +30,33 @@ class EmployeeController < ApplicationController
   end
 
   def epl_params
-    params.require(:employees).permit(:name, :age, :birthday, :address, :user_id)
+    params.require(:employees).permit(:name, :age, :birthday, :address, :user_id, employee_file_attributes: [:time_onboard])
   end
 
-  # def edit
-  #   @dpm = Department.find(params[:id])
-  # end
-  #
-  # def dpm_param
-  #   params.require(:department).permit(:name, :description)
-  # end
-  #
-  # def update
-  #   @dpm = Department.find(params[:id])
-  #   respond_to do |format|
-  #     if @dpm.update(dpm_param)
-  #       format.html { redirect_to dpms_list_url, notice: "Cập nhật phòng ban thành công." }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  #
-  # def delete
-  #   respond_to do |format|
-  #     Department.find(params[:id]).destroy
-  #     format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
-  #   end
-  # end
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def epl_param
+    params.require(:employee).permit(:name, :age, :birthday, :address, :user_id)
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    respond_to do |format|
+      if @employee.update(epl_param)
+        format.html { redirect_to dpms_list_url, notice: "Cập nhật phòng ban thành công." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def delete
+    respond_to do |format|
+      Employee.find(params[:id]).destroy
+      format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
+    end
+  end
 
 end
