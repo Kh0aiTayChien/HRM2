@@ -13,6 +13,10 @@
       <%= text_field 'employees', 'birthday', class: 'form-control' %>
       <label for = "5">Chọn tài khoản</label>:
       <%= collection_select(:employees, :user_id, User.all, :id, :email, prompt: true) %>
+      <br>
+      <label for = "6">Role</label>:
+      <%= collection_select(:employees, :role_id, Role.all, :id, :name, prompt: true) %>
+      <br>
       <%= submit_tag "Lưu", class: 'btn btn-primary' %>
     <% end -%>
     <%= link_to 'Quay lại', { :action => 'list' } %>

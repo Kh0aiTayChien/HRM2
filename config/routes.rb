@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # scope "(:locale)", locale: /en|vi/ do
   devise_for :users
     get "sign_in" => "devise/sessions#new"
     post "sign_in" => "devise/sessions#create"
@@ -43,7 +44,4 @@ Rails.application.routes.draw do
   end
   # devise_for :users
   # root "employee#index"
-
-
-
 end

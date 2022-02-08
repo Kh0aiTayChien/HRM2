@@ -8,6 +8,7 @@ class EmployeeController < ApplicationController
 
   def list
     @employees = Employee.all
+    authorize @employee
   end
 
   def show
@@ -30,7 +31,7 @@ class EmployeeController < ApplicationController
   end
 
   def epl_params
-    params.require(:employees).permit(:name, :age, :birthday, :address, :user_id, employee_file_attributes: [:time_onboard])
+    params.require(:employees).permit(:name, :age, :birthday, :address, :user_id, :role_id)
   end
 
   def edit
@@ -38,7 +39,7 @@ class EmployeeController < ApplicationController
   end
 
   def epl_param
-    params.require(:employee).permit(:name, :age, :birthday, :address, :user_id)
+    params.require(:employee).permit(:name, :age, :birthday, :address, :user_id, :role_id)
   end
 
   def update

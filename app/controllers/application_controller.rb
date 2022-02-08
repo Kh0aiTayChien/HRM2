@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  # def after_sign_in_path_for(resource)
-  #   if current_user.has_role?(:admin)
-  #     dashboard_path
-  #   elsif current_user.has_role?(:student)
-  #     root_path
-  #   end
-  # end
+  rescue_from Pundit::NotAuthorizedError, with: :employee_not_authorized
+
+  private
+
+  def employee_not_authorized
+    flash[:alert] = "Bạn không có quyền truy cập"
+    redirect_to authenticated_root_path
+  end
+
 end

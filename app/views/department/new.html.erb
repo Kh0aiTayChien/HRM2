@@ -6,9 +6,10 @@
       <label for="1">Tên</label>:
       <%= text_field 'departments', 'name', class: 'form-control' %>
       <label for="2">Mô tả</label>:
-      <%= text_field 'departments', 'description', class: 'form-control' %>
+      <%= text_area 'departments', 'description', class: 'form-control' %>
       <%= submit_tag "Lưu", class: 'btn btn-primary' %>
-    <% end -%>
+    <% end %>
     <%= link_to 'Quay lại', { :action => 'list' } %>
   </div>
 </div>
+

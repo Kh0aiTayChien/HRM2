@@ -22,20 +22,18 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <%= link_to 'Du an', prj_list_path, class: "nav-link active" %>
+            <%= link_to 'Dự án', prj_list_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Phong ban', dpms_list_path, class: "nav-link active" %>
+            <%= link_to 'Phòng ban', dpms_list_path, class: "nav-link active" %>
           <li class="nav-item">
-            <%= link_to 'Nhan vien', epl_list_path, class: "nav-link active" %>
+            <%= link_to 'Nhân viên', epl_list_path, class: "nav-link active" %>
           </li>
           <li class="nav-item dropdown">
-            <span class="nav-link nav-link dropdown-toggle navbarDropdown "  role="button" data-toggle="dropdown" aria-expanded="false">Xin chao <%= current_user.employee.name %></span>
+            <span class="nav-link nav-link dropdown-toggle navbarDropdown "  role="button" data-toggle="dropdown" aria-expanded="false">Xin chào <%= current_user.employee.name %></span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Thong tin ca nhan", epl_info_path, class: "dropdown-item" %>
               <%= link_to "Dang xuat", sign_out_path, class: "dropdown-item" %>
-<!--              <div class="dropdown-divider"></div>-->
-<!--              <a class="dropdown-item" href="#">Something else here</a>-->
             </div>
           </li>
         </ul>
@@ -44,6 +42,7 @@
   </nav>
   <p class="notice", style="color: green"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+
 </div>
 <div class="container">
   <%= yield %>
