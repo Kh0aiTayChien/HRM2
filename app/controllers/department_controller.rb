@@ -56,4 +56,8 @@ class DepartmentController < ApplicationController
   def show_project
     @prj = Project.find(params[:id])
   end
+
+  def show_epl
+    @employee = Employee.find(param[:id])
+  end
 end

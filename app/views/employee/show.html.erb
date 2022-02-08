@@ -5,6 +5,9 @@
   <strong>Ngày sinh: </strong> <%= @employee.birthday %><br/>
   <strong>Địa chỉ: </strong> <%= @employee.address %><br/>
   <strong>Ngày vào công ty: </strong> <%= @employee.created_at %><br/>
+  <% if @employee.department_id.present? %>
+  <strong>Phòng ban: </strong> <%= @employee.department.name %><br/>
+    <% end %>
 </p>
 
 

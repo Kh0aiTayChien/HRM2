@@ -17,6 +17,12 @@
       <label for = "6">Role</label>:
       <%= collection_select(:employees, :role_id, Role.all, :id, :name, prompt: true) %>
       <br>
+      <label for = "7">Phòng ban</label>:
+      <%= collection_select(:employees, :department_id, Department.all, :id, :name, prompt: true) %>
+      <br>
+      <label for = "8">Trưởng phòng</label>:
+      <%= text_field 'employees', 'is_pm', class: 'form-control' %>
+      <br>
       <%= submit_tag "Lưu", class: 'btn btn-primary' %>
     <% end -%>
     <%= link_to 'Quay lại', { :action => 'list' } %>

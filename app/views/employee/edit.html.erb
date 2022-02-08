@@ -7,8 +7,10 @@
       <p>Tuổi: <%= f.text_field 'age', class: 'form-control' %></p>
       <p>Ngày sinh: <%= f.text_field 'birthday', class: 'form-control' %></p>
       <p>Địa chỉ: <%= f.text_field 'address', class: 'form-control' %></p>
+      <p>Trưởng phòng: <%= f.text_field 'is_pm', class: 'form-control' %></p>
       <p>Email: <%= f.collection_select :user_id, User.all, :id, :email %></p>
       <p>Role: <%= f.collection_select :role_id, Role.all, :id, :name %></p>
+      <p>Phòng ban: <%= f.collection_select :department_id, Department.all, :id, :name %></p>
       <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
     <% end %>
     <%= link_to 'Quay lại', { :action => 'list' } %>

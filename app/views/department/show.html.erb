@@ -1,13 +1,21 @@
 <h1><%= @dpm.name %></h1>
 <p>
+  <strong style="color: #B00100">Truong phong:
+    <% @dpm.employees.each do |c| %>
+      <% if c.is_pm.present? %>
+        <%= c.name %>
+      <% end %>
+    <% end %></strong><br/>
   <strong>Mô tả: </strong> <%= @dpm.description %><br/>
   <strong>Các dự án hiện có: </strong>
-
   <% @dpm.projects.each do |c| %>
+  <li><%= c.name %></li>
+<% end %>
+<strong>Thành viên: </strong>
+<% @dpm.employees.each do |c| %>
+  <% if c.is_pm.blank? %>
     <li><%= c.name %></li>
   <% end %>
-
+<% end %>
 </p>
-
-
 <%= link_to 'Quay lại', { :action => 'list' } %>
