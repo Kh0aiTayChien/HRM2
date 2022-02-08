@@ -22,11 +22,12 @@ class EmployeeController < ApplicationController
   def create
     @employee = Employee.new(epl_params)
     respond_to do |format|
-      if @employee.save
-        format.html { redirect_to epl_list_url, notice: "Thêm phòng ban thành công." }
+      if @employee.save!
+        format.html { redirect_to epl_list_url, notice: "Thêm nhân viên thành công." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
+
     end
   end
 
