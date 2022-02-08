@@ -13,5 +13,5 @@ class Employee < ApplicationRecord
   validates :birthday, presence: true
   validates :address, presence: true, length: {minimum: 6}
   validates :role_id, presence: true
-
+  validates :user_id, uniqueness: true
 end

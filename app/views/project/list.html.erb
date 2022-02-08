@@ -10,9 +10,9 @@
       <th>Phòng ban đảm nhận</th>
       <th colspan="2">Tuỳ chọn</th>
     </tr>
-    <% @projects.each do |c| %>
+    <% @projects.each_with_index do |c, index| %>
       <tr>
-        <td><%= c.id %></td>
+        <td><%= index+1 %></td>
         <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
         <td><%= c.description %></td>
         <td><%= c.department.name %></td>
