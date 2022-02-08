@@ -15,12 +15,12 @@
       <tr>
         <td><%= c.id %></td>
         <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
-<!--        <td><%#= c.role.name %></td>-->
-        <%# if c.user.email.blank? %>
-<!--        <td>khong co</td>-->
-          <%# else %>
-<!--          <td><%#= c.user.email %></td>-->
-          <%# end %>
+        <td><%= c.role.name %></td>
+        <% if c.user.email.blank? %>
+        <td>khong co</td>
+          <% else %>
+          <td><%= c.user.email %></td>
+          <% end %>
         <td>
           <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
           <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>

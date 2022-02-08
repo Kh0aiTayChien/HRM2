@@ -1,0 +1,12 @@
+<% if @employee.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Phát hiện <%= @employee.errors.count %> lỗi.
+    </div>
+    <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

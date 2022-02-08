@@ -8,7 +8,6 @@ class EmployeeController < ApplicationController
 
   def list
     @employees = Employee.all
-    authorize @employee
   end
 
   def show
@@ -22,7 +21,7 @@ class EmployeeController < ApplicationController
   def create
     @employee = Employee.new(epl_params)
     respond_to do |format|
-      if @employee.save!
+      if @employee.save
         format.html { redirect_to epl_list_url, notice: "Thêm nhân viên thành công." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +46,7 @@ class EmployeeController < ApplicationController
     @employee = Employee.find(params[:id])
     respond_to do |format|
       if @employee.update(epl_param)
-        format.html { redirect_to dpms_list_url, notice: "Cập nhật phòng ban thành công." }
+        format.html { redirect_to epl_list_url, notice: "Cập nhật thông tin nhân viên thành công." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -57,7 +56,7 @@ class EmployeeController < ApplicationController
   def delete
     respond_to do |format|
       Employee.find(params[:id]).destroy
-      format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
+      format.html { redirect_to epl_list_url, notice: "Xóa nhân viên thành công." }
     end
   end
 
