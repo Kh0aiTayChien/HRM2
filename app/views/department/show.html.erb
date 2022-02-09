@@ -9,8 +9,13 @@
   <strong>Mô tả: </strong> <%= @dpm.description %><br/>
   <strong>Các dự án hiện có: </strong>
   <% @dpm.projects.each do |c| %>
-  <li><%= c.name %></li>
+    <% if c.name.blank? %>
+    <p>khong co</p>
+  <% else %>
+    <li><%= c.name %></li>
+  <% end %>
 <% end %>
+<br>
 <strong>Thành viên: </strong>
 <% @dpm.employees.each do |c| %>
   <% if c.is_pm.blank? %>

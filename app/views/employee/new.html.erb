@@ -1,30 +1,52 @@
 <h1>Thêm nhân viên</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_tag :action => 'create' do %>
+    <%= form_with( model: @employee,url: epl_create_path, local: true) do |form| %>
       <%= render 'shared/validate_epl' %>
-      <label for="1">Tên</label>:
-      <%= text_field 'employees', 'name', class: 'form-control' %>
-      <label for="2">Tuổi</label>:
-      <%= text_field 'employees', 'age', class: 'form-control' %>
-      <label for="3">Địa chỉ</label>:
-      <%= text_field 'employees', 'address', class: 'form-control' %>
-      <label for="4">Ngày sinh</label>:
-      <%= date_field 'employees', 'birthday', class: 'form-control' %>
-      <label for = "5">Chọn tài khoản</label>:
-      <%= collection_select(:employees, :user_id, User.all, :id, :email, prompt: true) %>
-      <br>
-      <label for = "6">Role</label>:
-      <%= collection_select(:employees, :role_id, Role.all, :id, :name, prompt: true) %>
-      <br>
-      <label for = "7">Phòng ban</label>:
-      <%= collection_select(:employees, :department_id, Department.all, :id, :name, prompt: true) %>
-      <br>
-      <label for = "8">Trưởng phòng</label>:
-      <%= text_field 'employees', 'is_pm', class: 'form-control' %>
-      <br>
-      <%= submit_tag "Lưu", class: 'btn btn-primary' %>
-    <% end -%>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :age %>
+        <%= form.text_field :age, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: 'form-control'%>
+      </div>
+
+      <div class="field">
+        <%= form.label :birthday %>
+        <%= form.text_field :birthday, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :email %>
+        <%= collection_select(:employee, :user_id, User.all, :id, :email, prompt: true) %>
+      </div>
+
+      <div class="field">
+      <%= form.label :role %>
+      <%= collection_select(:employee, :role_id, Role.all, :id, :name, prompt: true)  %>
+      </div>
+
+      <div class="field">
+        <%= form.fields_for :employee_file do |ff| %>
+          <%= ff.label :position %>
+          <%= ff.text_field :position, class: 'form-control' %>
+          <br>
+          <%= ff.label :time_onboard %>
+          <%= ff.text_field :time_onboard, class: 'form-control'  %>
+        <% end %>
+      </div>
+
+      <%= form.submit 'Lưu thay đổi', class: 'btn btn-success' %>
+    <% end %>
+
+
     <%= link_to 'Quay lại', { :action => 'list' } %>
-  </div>
+    </div>
 </div>
