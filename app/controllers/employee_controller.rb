@@ -11,6 +11,8 @@ class EmployeeController < ApplicationController
   end
 
   def show
+    # @employee = Employee.includes(:employee_file).where(id: params[:id]).first
+    # @employee.employee_file
     @employee = Employee.find(params[:id])
   end
 
@@ -35,20 +37,22 @@ class EmployeeController < ApplicationController
   def epl_params_create
     params
           .require(:employee)
-          .permit(:name, :age, :birthday, :address, :user_id, :role_id,
+          .permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm,
                   employee_file_attributes: [:position, :time_onboard] )
 
   end
 
   def edit
     @employee = Employee.find(params[:id])
+
   end
 
 
   def epl_param_update
     params
       .require(:employee)
-      .permit(:name, :age, :birthday, :address, :user_id, :role_id)
+      .permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm,
+              employee_file_attributes: [:id,:position, :time_onboard] )
 
   end
 
