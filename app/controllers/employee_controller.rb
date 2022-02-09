@@ -16,12 +16,13 @@ class EmployeeController < ApplicationController
 
   def new
     @employee = Employee.new
+    @employee.build_employee_file
   end
 
   def create
-    @employee = Employee.new(epl_params)
+    @employee = Employee.new(epl_params_create)
     respond_to do |format|
-      if @employee.save
+      if @employee.save!
         format.html { redirect_to epl_list_url, notice: "Thêm nhân viên thành công." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -30,22 +31,31 @@ class EmployeeController < ApplicationController
     end
   end
 
-  def epl_params
-    params.require(:employees).permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm)
+
+  def epl_params_create
+    params
+          .require(:employee)
+          .permit(:name, :age, :birthday, :address, :user_id, :role_id,
+                  employee_file_attributes: [:position, :time_onboard] )
+
   end
 
   def edit
     @employee = Employee.find(params[:id])
   end
 
-  def epl_param
-    params.require(:employee).permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm)
+
+  def epl_param_update
+    params
+      .require(:employee)
+      .permit(:name, :age, :birthday, :address, :user_id, :role_id)
+
   end
 
   def update
     @employee = Employee.find(params[:id])
     respond_to do |format|
-      if @employee.update(epl_param)
+      if @employee.update(epl_param_update)
         format.html { redirect_to epl_list_url, notice: "Cập nhật thông tin nhân viên thành công." }
       else
         format.html { render :edit, status: :unprocessable_entity }

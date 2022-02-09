@@ -1,6 +1,6 @@
 development:
   adapter: mysql2
-  database: hrm2
+  database: hrm3
   username: leminhchien
   password: password
   host: localhost
