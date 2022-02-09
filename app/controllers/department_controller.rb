@@ -2,6 +2,7 @@ class DepartmentController < ApplicationController
   layout 'dashboard'
   def list
     @dpms = Department.all
+    authorize @dpms
   end
 
   def show

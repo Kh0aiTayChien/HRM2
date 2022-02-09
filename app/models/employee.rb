@@ -1,4 +1,7 @@
 class Employee < ApplicationRecord
+
+  enum role_id: { :admin => 1, hr: 2, leader: 3, user: 4}
+
   belongs_to :department, optional: true
   belongs_to :project, optional: true
   belongs_to :user

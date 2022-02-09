@@ -15,7 +15,7 @@
       <tr>
         <td><%= index+1 %></td>
         <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
-        <td><%= c.role.name %></td>
+<!--        <td><%#= c.role.name %></td>-->
         <% if c.user.email.present? %>
           <td><%= c.user.email %></td>
           <% else %>

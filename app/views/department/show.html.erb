@@ -1,6 +1,6 @@
 <h1><%= @dpm.name %></h1>
 <p>
-  <strong style="color: #B00100">Truong phong:
+  <strong style="color: #B00100">Trưởng phòng:
     <% @dpm.employees.each do |c| %>
       <% if c.is_pm.present? %>
         <%= c.name %>

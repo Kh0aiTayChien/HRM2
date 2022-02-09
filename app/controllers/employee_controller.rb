@@ -8,6 +8,7 @@ class EmployeeController < ApplicationController
 
   def list
     @employees = Employee.all
+    authorize @employees
   end
 
   def show

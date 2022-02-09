@@ -1,11 +1,12 @@
 class EmployeePolicy < ApplicationPolicy
-  # class Scope < Scope
-  #   def resolve
-  #     scope.all
-  #   end
-  # end
+  attr_reader :user, :employee
+
+  def initialize(user, employee)
+    @user = user
+    @employee = employee
+  end
 
   def list?
-    @user.employee.role.admin
+    user.employee.admin?
   end
 end
