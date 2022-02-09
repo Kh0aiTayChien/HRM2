@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   # scope "(:locale)", locale: /en|vi/ do
-  devise_for :users
-    get "sign_in" => "devise/sessions#new"
-    post "sign_in" => "devise/sessions#create"
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+  as :user do
+    get "sign_in" => "users/sessions#new"
+    post "sign_in" => "users/sessions#create"
+    get "sign_up" => "users/registrations#new"
+    post "sign_up" => "users/registrations#create"
+    get "sign_out" => "users/sessions#destroy"
+  end
+
 
   devise_scope :user do
 
@@ -36,10 +45,13 @@ Rails.application.routes.draw do
       get 'epl/edit' => 'employee#edit'
       get 'epl/delete' => 'employee#delete'
       get 'epl/info' => 'employee#info'
+
+      get 'user/list' => 'user#list'
+      get 'user/delete' => 'user#delete'
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'users/sessions#new', as: :unauthenticated_root
     end
   end
   # devise_for :users

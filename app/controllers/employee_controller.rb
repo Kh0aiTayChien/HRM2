@@ -31,21 +31,25 @@ class EmployeeController < ApplicationController
     end
   end
 
+
   def epl_params_create
     params
           .require(:employee)
           .permit(:name, :age, :birthday, :address, :user_id, :role_id,
                   employee_file_attributes: [:position, :time_onboard] )
+
   end
 
   def edit
     @employee = Employee.find(params[:id])
   end
 
+
   def epl_param_update
     params
       .require(:employee)
       .permit(:name, :age, :birthday, :address, :user_id, :role_id)
+
   end
 
   def update
