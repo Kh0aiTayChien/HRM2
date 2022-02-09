@@ -8,10 +8,10 @@ class Employee < ApplicationRecord
   has_one :employee_file
   accepts_nested_attributes_for :employee_file
 
-  validates :name, presence: true, length: {minimum: 2}
-  validates :age, presence: true, numericality: true
-  validates :birthday, presence: true
-  validates :address, presence: true, length: {minimum: 6}
-  validates :role_id, presence: true
-  validates :user_id, uniqueness: true
+  # validates :name, presence: true, length: {minimum: 2}
+  # validates :age, presence: true, numericality: true
+  # validates :birthday, presence: true
+  # validates :address, presence: true, length: {minimum: 6}
+  # validates :role_id, presence: true
+  # validates :user_id, uniqueness: true
 end
