@@ -1,2 +1,6 @@
-<p>phong ban: <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id ) %>
-<p>du an:
+<h2>Phòng ban của
+  bạn: <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h2>
+<h2>Dự án của bạn:
+  <% if current_user.employee.employee_projects.blank? %>
+    ...</h2>
+  <% end %>

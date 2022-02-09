@@ -48,7 +48,7 @@ class EmployeeController < ApplicationController
   def epl_param_update
     params
       .require(:employee)
-      .permit(:name, :age, :birthday, :address, :user_id, :role_id)
+      .permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm)
 
   end
 

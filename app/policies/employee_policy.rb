@@ -1,11 +1,11 @@
 class EmployeePolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
+  # class Scope < Scope
+  #   def resolve
+  #     scope.all
+  #   end
+  # end
 
   def list?
-    @employee.has_role? :Admin
+    @user.employee.role.admin
   end
 end
