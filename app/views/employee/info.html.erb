@@ -8,4 +8,10 @@
   <strong>Email: </strong> <%= current_user.email %><br/>
   <strong>Role: </strong> <%= current_user.employee.role.name %><br/>
   <strong>Ngày vào công ty: </strong> <%= current_user.employee.created_at %><br/>
+<!--  <strong>Phòng ban: </strong> <%#= link_to current_user.employee.department.name, dpms_show_url, :id => current_user.employee.department.id %><br/>-->
+  <%# if current_user.employee.employee_projects.id.present? %>
+<!--    <strong>Du an: </strong> <%#= link_to current_user.employee.employee_project.project.name, dpms_show_url, id: current_user.employee.department.id %><br/>-->
+    <%# else %>
+<!--  <strong>Du an: khong co</strong>-->
+    <%# end %>
 </p>

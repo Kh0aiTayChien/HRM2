@@ -60,4 +60,8 @@ class EmployeeController < ApplicationController
     end
   end
 
+  def show_project
+    @prj = Project.find(params[:id])
+  end
+
 end
