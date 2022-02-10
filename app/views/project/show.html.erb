@@ -1,8 +1,9 @@
 <h1><%= @project.name %></h1>
-
+<%= link_to "Quản lý nhân viên", {:controller => "employee_project", action: 'index', :id => @project.id } %><br/>
 <p>
   <strong>Mô tả: </strong> <%= @project.description %><br />
   <strong>Phòng ban đảm nhận: </strong> <%= @project.department.name %><br/>
+
 </p>
 
 

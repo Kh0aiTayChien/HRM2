@@ -46,8 +46,12 @@ Rails.application.routes.draw do
       get 'epl/delete' => 'employee#delete'
       get 'epl/info' => 'employee#info'
 
+
       get 'user/list' => 'user#list'
       get 'user/delete' => 'user#delete'
+
+      resources 'employee_project'
+      # get 'employee_project/delete' => 'employee_project#destroy'
     end
 
     unauthenticated do

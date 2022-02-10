@@ -1,0 +1,13 @@
+<h1>Cập nhật thong tin nhan vien </h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @employees_project, :url => { :action => "update", :id => @employees_project } do |f| %>
+      <%#= render 'shared/validate_project' %>
+      <p>Nhan vien: <%= @employees_project.employee.name  %></p>
+      <p>Ngay vao: <%= f.text_field 'time_assign', class: 'form-control' %></p>
+
+      <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
+    <% end %>
+    <%= link_to 'Quay lại', { :action => 'index' } %>
+  </div>
+</div>

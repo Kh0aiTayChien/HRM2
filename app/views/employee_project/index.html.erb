@@ -1,0 +1,26 @@
+<% if @employees.blank? %>
+  <p>Hiện tại không có nhân viên nào.</p>
+<% else %>
+  <p style="color: blue">Hiện tại đang có <%= @employees.length %> nhân viên trong dự án:</p>
+  <table class="table table-striped">
+    <tr>
+      <th>STT</th>
+      <th>Tên</th>
+      <th>Ngay vao du an</th>
+      <th colspan="2">Tuỳ chọn</th>
+    </tr>
+    <% @employees.each_with_index do |c, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= c.employee.name %></td>
+        <td><%= c.time_assign %></td>
+        <td>
+          <%= link_to 'Cập nhật', { :action => 'edit', :id => c.id } %>
+          <%= link_to "Xoá", { :action => 'destroy', :id => c.id }, data: { "turbo-method": :delete,
+                                                                            turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<p><%= link_to "Thêm người", { :action => 'new', :id => @project.id } %></p>

@@ -1,0 +1,22 @@
+<h1>Thêm nhan vien vao du an </h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_tag :action => 'create' do %>
+      <%#= render 'shared/validate_project' %>
+      <label for="0">Chon nhan vien</label>:
+      <%= collection_select(:employee_project, :employee_id, Employee.all, :id, :name, prompt: true) %>
+      <br>
+      <label for="2">Vai tro </label>:
+      <%= select(:employee_project, :is_leader, [['Truong Du An', 1], ['Nhan Vien', 0]]) %>
+      <br>
+      <label for="1">Ngay vao du an</label>:
+      <%= date_field 'employee_project', 'time_assign', class: 'form-control' %>
+
+      <%= hidden_field 'employee_project', 'project_id', class: 'form-control', value:@project.id %>
+      <br>
+      <%= submit_tag "Lưu", class: 'btn btn-primary',:id => @project.id %>
+    <% end -%>
+    <%= link_to 'Quay lại', { :action => 'index', :id => @project.id } %>
+  </div>
+</div>
+<script>$('#employee_project_employee_id').select2()</script>
