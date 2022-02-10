@@ -3,19 +3,29 @@
 <% else %>
   <p style="color: blue">Hiện tại đang có <%= @users.length %> tài khoản trên hệ thống:</p>
   <table class="table table-striped">
-    <tr>
+    <tr class="table table-success">
       <th>STT</th>
       <th>Tài khoản</th>
+      <th>Người sử dụng</th>
       <th>Tuỳ chọn</th>
     </tr>
     <% @users.each_with_index do |c, index| %>
       <tr>
         <td><%= index+1 %></td>
         <td><%= c.email %></td>
+        <% if c.employee.present? %>
+        <td><%= c.employee.name %></td>
+          <% else %>
+          <td>chưa có</td>
+          <% end %>
         <td>
+          <% if c.email != 'ttl@gmail.com' %>
           <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+            <% else %>
+            <% end %>
         </td>
       </tr>
     <% end %>
   </table>
 <% end %>
+<%= link_to "Đăng ký", sign_up_path %>

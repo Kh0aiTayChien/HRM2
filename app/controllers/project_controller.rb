@@ -2,6 +2,7 @@ class ProjectController < ApplicationController
   layout 'dashboard'
   def list
     @projects = Project.all
+    authorize @projects
   end
 
   def show
@@ -10,6 +11,7 @@ class ProjectController < ApplicationController
 
   def new
     @project = Project.new
+    authorize @project
   end
 
   def create
@@ -29,6 +31,7 @@ class ProjectController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def project_param

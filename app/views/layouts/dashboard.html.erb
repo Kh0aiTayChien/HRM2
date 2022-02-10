@@ -35,9 +35,8 @@
             <%= link_to 'Tài khoản', user_list_path, class: "nav-link active" %>
           </li>
           <li class="nav-item dropdown">
-
             <span class="nav-link nav-link dropdown-toggle navbarDropdown "  role="button" data-toggle="dropdown" aria-expanded="false">Xin chào
-        <%= current_user.email%>>
+        <%= current_user.employee.name%>
             </span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Thong tin ca nhan", epl_info_path, class: "dropdown-item" %>

@@ -3,7 +3,7 @@
 <% else %>
   <p style="color: blue">Hiện tại đang có <%= @projects.length %> dự án:</p>
   <table class="table table-striped">
-    <tr>
+    <tr class="table table-success">
       <th>STT</th>
       <th>Tên</th>
       <th>Mô tả</th>
@@ -18,7 +18,9 @@
         <td><%= c.department.name %></td>
         <td>
           <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+          <% if current_user.employee.role_id == 'admin' %>
+        <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+            <% end %>
         </td>
       </tr>
     <% end %>

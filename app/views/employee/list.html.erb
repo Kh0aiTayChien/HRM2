@@ -4,7 +4,7 @@
 <% else %>
   <p style="color: blue">Hiện tại đang có <%= @employees.length %> nhân viên:</p>
   <table class="table table-striped">
-    <tr>
+    <tr class="table table-success">
       <th>STT</th>
       <th>Tên</th>
       <th>Role</th>
@@ -15,15 +15,18 @@
       <tr>
         <td><%= index+1 %></td>
         <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
-        <td><%= c.role.name %></td>
-        <% if c.user.email.blank? %>
-        <td>khong co</td>
-          <% else %>
+        <td><%= c.role_id %></td>
+        <% if c.user.email.present? %>
           <td><%= c.user.email %></td>
+          <% else %>
+          <td>khong co</td>
           <% end %>
         <td>
           <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+          <% if c.id == 1 || current_user.employee.role_id != 'admin' %>
+          <% else %>
+            <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+            <% end %>
         </td>
       </tr>
     <% end %>

@@ -1,19 +1,24 @@
 <h1><%= @dpm.name %></h1>
 <p>
-  <strong style="color: #B00100">Truong phong:
+  <strong style="color: #B00100">Trưởng phòng:
     <% @dpm.employees.each do |c| %>
-      <% if c.is_pm.present? %>
+      <% if c.is_pm == 0 %>
         <%= c.name %>
       <% end %>
     <% end %></strong><br/>
   <strong>Mô tả: </strong> <%= @dpm.description %><br/>
   <strong>Các dự án hiện có: </strong>
   <% @dpm.projects.each do |c| %>
-  <li><%= c.name %></li>
+    <% if c.name.blank? %>
+    <p>khong co</p>
+  <% else %>
+    <li><%= c.name %></li>
+  <% end %>
 <% end %>
+<br>
 <strong>Thành viên: </strong>
 <% @dpm.employees.each do |c| %>
-  <% if c.is_pm.blank? %>
+  <% if c.is_pm == 1 %>
     <li><%= c.name %></li>
   <% end %>
 <% end %>

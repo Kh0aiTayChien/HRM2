@@ -1,9 +1,9 @@
-class EmployeePolicy < ApplicationPolicy
-  attr_reader :user, :employee
+class DepartmentPolicy < ApplicationPolicy
+  attr_reader :user, :department
 
-  def initialize(user, employee)
+  def initialize(user, department)
     @user = user
-    @employee = employee
+    @department = department
   end
 
   def list?
@@ -15,6 +15,10 @@ class EmployeePolicy < ApplicationPolicy
   end
 
   def edit?
+    user.employee.admin?
+  end
+
+  def delete?
     user.employee.admin?
   end
 

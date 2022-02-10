@@ -8,6 +8,7 @@ class EmployeeController < ApplicationController
 
   def list
     @employees = Employee.all
+    authorize @employees
   end
 
   def show
@@ -19,6 +20,7 @@ class EmployeeController < ApplicationController
   def new
     @employee = Employee.new
     @employee.build_employee_file
+    authorize @employee
   end
 
   def create
@@ -38,21 +40,24 @@ class EmployeeController < ApplicationController
     params
           .require(:employee)
           .permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm,
-                  employee_file_attributes: [:position, :time_onboard] )
+
+                  employee_file_attributes: [:position] )
+
 
   end
 
   def edit
     @employee = Employee.find(params[:id])
 
+    authorize @employee
+
   end
 
 
   def epl_param_update
     params
-      .require(:employee)
-      .permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm,
-              employee_file_attributes: [:id,:position, :time_onboard] )
+      .require(:employee).permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm,
+              employee_file_attributes: [:id,:position] )
 
   end
 
@@ -72,6 +77,10 @@ class EmployeeController < ApplicationController
       Employee.find(params[:id]).destroy
       format.html { redirect_to epl_list_url, notice: "Xóa nhân viên thành công." }
     end
+  end
+
+  def show_project
+    @prj = Project.find(params[:id])
   end
 
 end

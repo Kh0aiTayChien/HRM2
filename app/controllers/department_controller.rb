@@ -2,6 +2,7 @@ class DepartmentController < ApplicationController
   layout 'dashboard'
   def list
     @dpms = Department.all
+    authorize @dpms
   end
 
   def show
@@ -10,6 +11,7 @@ class DepartmentController < ApplicationController
 
   def new
     @dpm = Department.new
+    authorize @dpm
   end
 
   def create
@@ -29,6 +31,7 @@ class DepartmentController < ApplicationController
 
   def edit
     @dpm = Department.find(params[:id])
+    authorize @dpm
   end
 
   def dpm_param
