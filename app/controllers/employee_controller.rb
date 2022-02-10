@@ -18,6 +18,7 @@ class EmployeeController < ApplicationController
   def new
     @employee = Employee.new
     @employee.build_employee_file
+    authorize @employee
   end
 
   def create
@@ -43,6 +44,7 @@ class EmployeeController < ApplicationController
 
   def edit
     @employee = Employee.find(params[:id])
+    authorize @employee
   end
 
 

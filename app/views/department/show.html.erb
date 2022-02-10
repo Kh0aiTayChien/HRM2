@@ -2,7 +2,7 @@
 <p>
   <strong style="color: #B00100">Trưởng phòng:
     <% @dpm.employees.each do |c| %>
-      <% if c.is_pm.present? %>
+      <% if c.is_pm == 0 %>
         <%= c.name %>
       <% end %>
     <% end %></strong><br/>
@@ -18,7 +18,7 @@
 <br>
 <strong>Thành viên: </strong>
 <% @dpm.employees.each do |c| %>
-  <% if c.is_pm.blank? %>
+  <% if c.is_pm == 1 %>
     <li><%= c.name %></li>
   <% end %>
 <% end %>

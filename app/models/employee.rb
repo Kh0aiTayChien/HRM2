@@ -17,5 +17,5 @@ class Employee < ApplicationRecord
   validates :address, presence: true, length: {minimum: 6}
   validates :role_id, presence: true
   validates :user_id, uniqueness: true
-
+  validates :is_pm, inclusion: { in: [0 , 1]}
 end

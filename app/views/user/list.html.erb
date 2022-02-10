@@ -19,7 +19,11 @@
           <td>chưa có</td>
           <% end %>
         <td>
+          <% if c.email != 'ttl@gmail.com' %>
           <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+            <% else %>
+          Xóa
+            <% end %>
         </td>
       </tr>
     <% end %>
