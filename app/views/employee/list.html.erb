@@ -23,7 +23,10 @@
           <% end %>
         <td>
           <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+          <% if c.id == 1 || current_user.employee.role_id != 'admin' %>
+          <% else %>
+            <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+            <% end %>
         </td>
       </tr>
     <% end %>

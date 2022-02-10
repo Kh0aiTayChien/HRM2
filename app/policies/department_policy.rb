@@ -18,4 +18,8 @@ class DepartmentPolicy < ApplicationPolicy
     user.employee.admin?
   end
 
+  def delete?
+    user.employee.admin?
+  end
+
 end

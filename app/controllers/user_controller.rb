@@ -13,4 +13,5 @@ class UserController < ApplicationController
       format.html { redirect_to user_list_url, notice: "Xoá tài khoản thành công." }
     end
   end
+
 end

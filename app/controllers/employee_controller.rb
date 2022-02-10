@@ -37,8 +37,8 @@ class EmployeeController < ApplicationController
   def epl_params_create
     params
           .require(:employee)
-          .permit(:name, :age, :birthday, :address, :user_id, :role_id,
-                  employee_file_attributes: [:position, :time_onboard] )
+          .permit(:name, :age, :birthday, :address, :user_id, :role_id, :department_id, :is_pm,
+                  employee_file_attributes: [:position] )
 
   end
 

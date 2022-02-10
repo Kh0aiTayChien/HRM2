@@ -18,7 +18,9 @@
         <td><%= c.department.name %></td>
         <td>
           <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+          <% if current_user.employee.role_id == 'admin' %>
+        <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+            <% end %>
         </td>
       </tr>
     <% end %>
