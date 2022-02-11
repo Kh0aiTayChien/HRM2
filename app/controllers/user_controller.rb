@@ -9,7 +9,9 @@ class UserController < ApplicationController
 
   def delete
     respond_to do |format|
-      User.find(params[:id]).destroy
+      @user = User.find(params[:id])
+      authorize @user
+      @user.destroy
       format.html { redirect_to user_list_url, notice: "Xoá tài khoản thành công." }
     end
   end

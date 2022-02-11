@@ -27,26 +27,16 @@
       </div>
       <div class="field">
         <%= form.label 'Role' %>
-        <%= collection_select(:employee, :role_id, Role.all, :name, :id, prompt: true) %> (1=admin, 2=hr, 3=leader, 4=user)
+        <%= collection_select(:employee, :role_id, Role.all, :name, :id,  prompt: true) %> (1=admin, 2=hr, 3=leader, 4=user)
       </div>
       <div class="field">
-        <%= form.label 'Ngày sinh' %>
+        <%= form.label 'Phòng ban' %>
         <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %>
       </div>
       <div class="field">
         <%= form.label 'Trưởng phòng' %>
         <%= form.text_field :is_pm, class: 'form-control' %>
       </div>
-      <div class="field">
-        <%= form.label :Department %>
-        <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true)  %>
-      </div>
-
-      <div class="field">
-        <%= form.label :Pm %>
-        <%= form.text_field :is_pm %>
-      </div>
-
       <div class="field">
         <%= form.fields_for :employee_file do |ff| %>
           <%= ff.label 'Chức vụ' %>

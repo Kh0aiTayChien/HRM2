@@ -8,21 +8,31 @@
       <th>STT</th>
       <th>Tên</th>
       <th>Mô tả</th>
-    <th colspan="2">Tuỳ chọn</th>
+      <% if current_user.employee.role_id == 'admin' %>
+        <th colspan="2">Tuỳ chọn</th>
+      <% end %>
     </tr>
     <% @dpms.each_with_index do |c, index| %>
       <tr>
-        <td><%= index+1 %></td>
-        <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
+        <td><%= index + 1 %></td>
+        <% if current_user.employee.department_id == c.id || current_user.employee.role_id == 'admin' %>
+          <td><%= link_to c.name, { :action => 'show', :id => c.id } %></td>
+        <% else %>
+          <td><%= c.name %></td>
+        <% end %>
         <td><%= c.description %></td>
-      <td>
-          <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <% if current_user.employee.role_id == 'admin' %>
-          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
-            <% end %>
-        </td>
+        <% if current_user.employee.role_id == 'admin' %>
+          <%# if policy(@dpms).update? %>
+            <td>
+              <%= link_to '📝', { :action => 'edit', :id => c.id } %>
+              <%= link_to "🗑", { :action => 'delete', :id => c.id } %>
+            </td>
+          <% end %>
+        <%# end %>
       </tr>
     <% end %>
   </table>
 <% end %>
-<p><%= link_to "Thêm phòng ban", {:action => 'new' }%></p>
+<% if current_user.employee.role_id == 'admin' %>
+<p><%= link_to "➕", { :action => 'new' } %></p>
+<% end %>

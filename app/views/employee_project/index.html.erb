@@ -7,20 +7,28 @@
       <th>STT</th>
       <th>Tên</th>
       <th>Ngay vao du an</th>
+      <% if current_user.employee.is_pm == 0 %>
       <th colspan="2">Tuỳ chọn</th>
+        <%# elsif current_user.employee.role == 'leader'%>
+<!--        <th>Tuỳ chọn</th>-->
+        <% end %>
     </tr>
     <% @employees.each_with_index do |c, index| %>
       <tr>
         <td><%= index + 1 %></td>
         <td><%= c.employee.name %></td>
         <td><%= c.time_assign %></td>
+        <% if current_user.employee.is_pm == 0 %>
         <td>
-          <%= link_to 'Cập nhật', { :action => 'edit', :id => c.id } %>
-          <%= link_to "Xoá", { :action => 'destroy', :id => c.id }, data: { "turbo-method": :delete,
+          <%= link_to '📝', { :action => 'edit', :id => c.id } %>
+          <%= link_to "🗑", { :action => 'destroy', :id => c.id }, data: { "turbo-method": :delete,
                                                                             turbo_confirm: "Are you sure?" } %>
         </td>
+          <% end %>
       </tr>
     <% end %>
   </table>
 <% end %>
-<p><%= link_to "Thêm người", { :action => 'new', :id => @project.id } %></p>
+<% if current_user.employee.is_pm == 0 %>
+<p><%= link_to "➕", { :action => 'new', :id => @project.id } %></p>
+<% end %>

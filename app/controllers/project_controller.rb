@@ -51,7 +51,9 @@ class ProjectController < ApplicationController
 
   def delete
     respond_to do |format|
-      Project.find(params[:id]).destroy
+      @prj = Project.find(params[:id])
+      authorize @prj
+      @prj.destroy
       format.html { redirect_to prj_list_url, notice: "Xoá dự án thành công." }
     end
   end

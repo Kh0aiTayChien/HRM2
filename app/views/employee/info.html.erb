@@ -1,14 +1,16 @@
 <h1 style="color: #B00100">THÔNG TIN CÁ NHÂN</h1>
 
 <p>
-  <strong>Tên: </strong> <%= current_user.employee.name %><br />
-  <strong>Tuổi: </strong> <%= current_user.employee.age %><br />
+  <strong>Tên: </strong> <%= current_user.employee.name %><br/>
+  <strong>Tuổi: </strong> <%= current_user.employee.age %><br/>
   <strong>Ngày sinh: </strong> <%= current_user.employee.birthday %><br/>
   <strong>Địa chỉ: </strong> <%= current_user.employee.address %><br/>
   <strong>Email: </strong> <%= current_user.email %><br/>
-
-  <strong>Vị Trí </strong> <%= current_user.employee.employee_file.position %><br/>
-  <strong>Role: </strong> <%= current_user.employee.role.name %><br/>
+  <% if current_user.employee.employee_file.present? %>
+    <strong>Vị Trí </strong> <%= current_user.employee.employee_file.position %><br/>
+  <% else %>
+  <% end %>
+  <strong>Role: </strong> <%= current_user.employee.role_id %><br/>
   <strong>Ngày vào công ty: </strong> <%= current_user.employee.created_at.strftime("%d/%m/%Y") %><br/>
 
 </p>

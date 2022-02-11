@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super do |resource|
-      return redirect_to '/'
+      return redirect_to user_list_path, notice: "Thêm tài khoản thành công."
     end
   end
 

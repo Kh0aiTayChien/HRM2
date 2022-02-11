@@ -7,7 +7,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def list?
-    user.employee.admin? || user.employee.leader?
+    user.employee.admin?
   end
 
   def new?
@@ -15,6 +15,10 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def edit?
+    user.employee.admin?
+  end
+
+  def delete?
     user.employee.admin?
   end
 

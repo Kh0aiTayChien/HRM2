@@ -5,6 +5,8 @@ ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
+gem 'rails-i18n'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -51,8 +53,8 @@ gem "pundit"
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  # gem 'pry-rails'
+  # gem 'pry-byebug'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
@@ -75,4 +77,3 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'rails-i18n'

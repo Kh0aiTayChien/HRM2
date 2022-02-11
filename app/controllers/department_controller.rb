@@ -51,7 +51,9 @@ class DepartmentController < ApplicationController
 
   def delete
     respond_to do |format|
-      Department.find(params[:id]).destroy
+      @dpm = Department.find(params[:id])
+      authorize @dpm
+      @dpm.destroy
       format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
     end
   end

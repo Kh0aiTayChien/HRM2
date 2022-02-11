@@ -1,10 +1,14 @@
 <h2>Phòng ban của bạn:
-  <% if current_user.employee.department.present? %>
-  <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h2>
-    <% else %>
+  <% if current_user.employee.present? %>
+    <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h2>
+  <% else %>
     ...
-    <% end %>
-<h2>Dự án của bạn:
-  <% if current_user.employee.employee_projects.blank? %>
-    ...</h2>
   <% end %>
+  <h2>Dự án của bạn:
+    <% if current_user.employee.present? %>
+      <% current_user.employee.employee_projects.each do |c| %>
+        <%= link_to c.project.name, prj_show_path(:id => c.project.id) %></h2>
+      <% end %>
+    <% else %>
+      <h6 style="color: silver">hiện tại chưa có</h6>
+    <% end %>

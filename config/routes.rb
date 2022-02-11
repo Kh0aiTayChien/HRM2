@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get "sign_up" => "users/registrations#new"
     post "sign_up" => "users/registrations#create"
     get "sign_out" => "users/sessions#destroy"
+    get "change_pw" => "users/passwords#edit"
+    put "change_pw" => "users/passwords#update"
   end
 
 

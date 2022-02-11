@@ -4,18 +4,13 @@
   <strong>Tuổi: </strong> <%= @employee.age %><br />
   <strong>Ngày sinh: </strong> <%= @employee.birthday %><br/>
   <strong>Địa chỉ: </strong> <%= @employee.address %><br/>
-
-
+  <% if @employee.employee_file.present? %>
   <strong>Vi tri: </strong> <%= @employee.employee_file.position %><br/>
-
-
-
+    <% else %>
+    <% end %>
   <strong>Ngày vào công ty: </strong> <%= @employee.created_at.strftime("%d/%m/%Y") %><br/>
-
   <% if @employee.department_id.present? %>
   <strong>Phòng ban: </strong> <%= @employee.department.name %><br/>
     <% end %>
 </p>
-
-
 <%= link_to 'Quay lại', {:action => 'list'} %>

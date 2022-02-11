@@ -9,27 +9,31 @@
       <th>Tên</th>
       <th>Role</th>
       <th>Email</th>
+      <% if current_user.employee.role_id == 'admin' %>
       <th colspan="2">Tuỳ chọn</th>
+        <% end %>
     </tr>
     <% @employees.each_with_index do |c, index| %>
       <tr>
-        <td><%= index+1 %></td>
-        <td><%= link_to c.name, {:action => 'show', :id => c.id} %></td>
+        <td><%= index + 1 %></td>
+        <td><%= link_to c.name, { :action => 'show', :id => c.id } %></td>
         <td><%= c.role_id %></td>
-        <% if c.user.email.present? %>
+        <% if c.user.present? %>
           <td><%= c.user.email %></td>
-          <% else %>
+        <% else %>
           <td>khong co</td>
-          <% end %>
-        <td>
-          <%= link_to 'Cập nhật', {:action => 'edit', :id => c.id} %>
-          <% if c.id == 1 || current_user.employee.role_id != 'admin' %>
-          <% else %>
-            <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
-            <% end %>
-        </td>
+        <% end %>
+        <% if c.id == 1 || current_user.employee.role_id != 'admin' %>
+        <% else %>
+          <td>
+            <%= link_to '📝', { :action => 'edit', :id => c.id } %>
+          <%= link_to "🗑", { :action => 'delete', :id => c.id } %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </table>
 <% end %>
-<p><%= link_to "Thêm nhân viên", {:action => 'new' }%></p>
+<% if current_user.employee.role_id == 'admin' %>
+<p><%= link_to "➕", { :action => 'new' } %></p>
+<% end %>

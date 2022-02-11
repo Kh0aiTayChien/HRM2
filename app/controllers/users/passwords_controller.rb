@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  skip_before_action :require_no_authentication, only: [:edit]
+
   # GET /resource/password/new
   # def new
   #   super
@@ -12,17 +14,17 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # GET /resource/password/edit?reset_password_token=abcdef
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # protected
-
+  #
   # def after_resetting_password_path_for(resource)
   #   super(resource)
   # end

@@ -74,7 +74,9 @@ class EmployeeController < ApplicationController
 
   def delete
     respond_to do |format|
-      Employee.find(params[:id]).destroy
+      @epl = Employee.find(params[:id])
+      authorize @epl
+      @epl.destroy
       format.html { redirect_to epl_list_url, notice: "Xóa nhân viên thành công." }
     end
   end

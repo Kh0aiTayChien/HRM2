@@ -20,7 +20,7 @@
           <% end %>
         <td>
           <% if c.email != 'ttl@gmail.com' %>
-          <%= link_to "Xoá", {:action => 'delete', :id => c.id} %>
+          <%= link_to "🗑", {:action => 'delete', :id => c.id} %>
             <% else %>
             <% end %>
         </td>
@@ -28,4 +28,4 @@
     <% end %>
   </table>
 <% end %>
-<%= link_to "Đăng ký", sign_up_path %>
+<%= link_to '➕', sign_up_path %>
