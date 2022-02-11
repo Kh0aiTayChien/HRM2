@@ -1,51 +1,80 @@
 <h1>Thêm nhân viên</h1>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-3">
 
     <%= form_with(model: @employee, url: epl_create_path, local: true) do |form| %>
       <%= render 'shared/validate_epl' %>
 
-      <div class="field">
+      <div class="field col-lg-6">
         <%= form.label 'Tên' %>
-        <%= form.text_field :name, class: 'form-control' %>
+        <%= form.text_field :name%>
       </div>
-      <div class="field">
+      <div class="field col-lg-6">
         <%= form.label 'Tuổi' %>
-        <%= form.text_field :age, class: 'form-control' %>
+        <%= form.text_field :age%>
       </div>
-      <div class="field">
+      <div class="field col-lg-6">
         <%= form.label 'Địa chỉ' %>
-        <%= form.text_field :address, class: 'form-control' %>
+        <%= form.text_field :address %>
       </div>
-      <div class="field">
+      <div class="field col-lg-6">
         <%= form.label 'Ngày sinh' %>
-        <%= form.text_field :birthday, class: 'form-control' %>
+        <%= form.text_field :birthday %>
       </div>
-      <div class="field">
-        <%= form.label 'Email' %>
-        <%= collection_select(:employee, :user_id, User.all, :id, :email, prompt: true) %>
-      </div>
-      <div class="field">
-        <%= form.label 'Role' %>
-        <%= collection_select(:employee, :role_id, Role.all, :name, :id,  prompt: true) %> (1=admin, 2=hr, 3=leader, 4=user)
-      </div>
-      <div class="field">
-        <%= form.label 'Phòng ban' %>
-        <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %>
-      </div>
-      <div class="field">
-        <%= form.label 'Trưởng phòng' %>
-        <%= form.text_field :is_pm, class: 'form-control' %>
-      </div>
-      <div class="field">
+      <div class="field col-lg-6">
         <%= form.fields_for :employee_file do |ff| %>
           <%= ff.label 'Chức vụ' %>
-          <%= ff.text_field :position, class: 'form-control' %>
+          <%= ff.text_field :position %>
         <% end %>
       </div>
+      </div>
+      <div class="col-md-6 ">
+        <div class="field col-lg-6">
+          <table>
+            <tr>
+              <td width="25%><%= form.label 'Email' %></td>
+            </tr>
+            <tr>
+              <td width="25%><%= collection_select(:employee, :user_id, User.all, :id, :email, prompt: true)  %></td>
+            </tr>
+            <tr>
+              <td width="25%> <%= form.label 'Vai Trò' %></td>
+            </tr>
+            <tr>
+              <td width="25%><%= collection_select(:employee, :role_id, Role.all, :name, :id,  prompt: true) %></td>
+            </tr>
+            <tr>
+              <td width="25%> <%= form.label '1=admin, 2=hr' %></td>
+            </tr>
+            <tr>
+              <td width="25%> <%= form.label ' 3=leader, 4=user' %> </td>
+            </tr>
+            <tr>
+              <td width="25%> <%= form.label 'Phòng ban' %></td>
+            </tr>
+            <tr>
+              <td width="25% ><%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %></td>
+            </tr>
+            <tr>
+              <td width="25%> <%= form.label 'Vai trò trong phòng' %></td>
+            </tr>
+            <tr>
+              <td width="25%><%= select(:employee, :is_pm, [['Trưởng Phòng', 1], ['Nhân Viên', 0]]) %></td>
+            </tr>
+          </table>
+
+        </div>
+
       <br>
       <%= form.submit 'Lưu thay đổi', class: 'btn btn-success' %>
     <% end %>
-    <%= link_to 'Quay lại', { :action => 'list' } %>
+    <%= link_to 'Quay lại', { :action => 'list' }, class: "btn btn-info" %>
   </div>
 </div>
+
+<script >
+      $('#employee_user_id').select2();
+      $('#employee_role_id').select2();
+      $('#employee_department_id').select2();
+      $('#employee_is_pm').select2();
+</script>

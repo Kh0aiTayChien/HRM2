@@ -1,6 +1,6 @@
 development:
   adapter: mysql2
-  database: hrm2
-  username: ttl
-  password: 123456
+  database: hrm5
+  username: leminhchien
+  password: password
   host: localhost

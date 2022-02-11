@@ -1,5 +1,5 @@
 <h2>Phòng ban của bạn:
-  <% if current_user.employee.present? %>
+  <% if current_user.employee.department_id.present? %>
     <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h2>
   <% else %>
     ...
