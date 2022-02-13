@@ -1,10 +1,33 @@
-<h1><%= @project.name %></h1>
-<%= link_to "Quản lý nhân viên", {:controller => "employee_project", action: 'index', :id => @project.id } %><br/>
+<h1 align="center"> Tên dự án: <%= @project.name %></h1>
+<% if  current_user.employee.role_id == 'admin' || current_user.employee.role_id == 'leader'  %>
+<button class="btn-light"><%= link_to "Quản lý nhân viên", {:controller => "employee_project", action: 'index', :id => @project.id } %></button>
+  <% end %>
+<br/>
+<div class="card">
+  <div class="card-header">
+    Thông tin và miêu tả về dự án
+  </div>
 <p>
-  <strong>Mô tả: </strong> <%= @project.description %><br />
-  <strong>Phòng ban đảm nhận: </strong> <%= @project.department.name %><br/>
-
-</p>
-
-
-<%= link_to 'Quay lại', {:action => 'list'} %>
+  <div class="row">
+<div class="col-4">
+  <strong>Mô tả vệ dự án : </strong>
+  <br>
+  <%= @project.description %><br />
+  <br>
+  <strong>Dự án thuộc đang thuộc phòng:  </strong>
+  <br>
+  <%= @project.department.name %><br/>
+  </div>
+<div class="col-4">
+  <strong>Ngày tạo dự án : </strong>
+  <br>
+  <%= @project.created_at %><br />
+  <br>
+  <strong>Lần cập nhật thông tin dự án gần nhất :  </strong>
+  <br>
+  <%= @project.updated_at %><br/>
+  </div>
+  </div>
+</div>
+<br>
+<button><%= link_to 'Quay lại', {:action => 'list'} %></button>

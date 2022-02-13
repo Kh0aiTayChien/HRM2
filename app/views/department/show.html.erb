@@ -1,13 +1,23 @@
-<h1><%= @dpm.name %></h1>
-<p>
-  <strong style="color: #B00100">Trưởng phòng:
-    <% @dpm.employees.each do |c| %>
-      <% if c.is_pm == 0 %>
-        <%= c.name %>
-      <% end %>
-    <% end %></strong><br/>
+<h1 align="center">Thông tin và mô tả về <%= @dpm.name %></h1>
+<div class="card">
+<div class="card-body">
+  <div class="row">
+
+    <div class="col-4">
+  <strong >Trưởng phòng:
+    <% if @pm.nil?  %>
+      Chưa có trưởng phòng
+    <% else %>
+      <%= @pm.name %>
+    <% end %>
+
+  </strong>
+      <br/>
   <strong>Mô tả: </strong> <%= @dpm.description %><br/>
-  <strong>Các dự án hiện có: </strong>
+  <strong>Phòng có tất cả </strong> <%= @count%> người <br/>
+    </div>
+    <div class="col-4">
+  <strong>Các dự án hiện có trực thuộc phòng quản lý: </strong>
   <% @dpm.projects.each do |c| %>
     <% if c.name.blank? %>
     <p>khong co</p>
@@ -16,11 +26,16 @@
   <% end %>
 <% end %>
 <br>
+      </div>
+    <div class="col-4">
 <strong>Thành viên: </strong>
 <% @dpm.employees.each do |c| %>
   <% if c.is_pm == 1 %>
     <li><%= c.name %></li>
   <% end %>
 <% end %>
-</p>
-<%= link_to 'Quay lại', { :action => 'list' } %>
+    </div>
+</div>
+</div>
+</div>
+<button><%= link_to 'Quay lại', { :action => 'list' } %></button>

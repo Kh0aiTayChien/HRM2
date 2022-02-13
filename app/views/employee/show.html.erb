@@ -1,16 +1,36 @@
-<h1><%= @employee.name %></h1>
 
-<p>
-  <strong>Tuổi: </strong> <%= @employee.age %><br />
-  <strong>Ngày sinh: </strong> <%= @employee.birthday %><br/>
-  <strong>Địa chỉ: </strong> <%= @employee.address %><br/>
-  <% if @employee.employee_file.present? %>
-  <strong>Vi tri: </strong> <%= @employee.employee_file.position %><br/>
-    <% else %>
-    <% end %>
-  <strong>Ngày vào công ty: </strong> <%= @employee.created_at.strftime("%d/%m/%Y") %><br/>
-  <% if @employee.department_id.present? %>
-  <strong>Phòng ban: </strong> <%= @employee.department.name %><br/>
-    <% end %>
-</p>
-<%= link_to 'Quay lại', {:action => 'list'} %>
+
+<div class="card">
+  <div class="card-header">
+    <h1 style="color: #0C8DF6">THÔNG TIN CÁ NHÂN CỦA <%= @employee.name %></h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col md-4">
+        <H4> Thông tin cơ bản</H4>
+        <strong>Tên: </strong> <%= @employee.name %><br/>
+        <strong>Tuổi: </strong> <%= @employee.age %><br/>
+        <strong>Ngày sinh: </strong> <%= @employee.birthday %><br/>
+        <strong>Địa chỉ: </strong> <%= @employee.address  %><br/>
+      </div>
+      <div class="col md-4">
+        <H4> Thông tin tài khoản </H4>
+        <strong>Email: </strong> <%=  @employee.user.email %><br/>
+      </div>
+      <div class="col md-4">
+        <H4> Thông tin bổ sung </H4>
+        <% if @employee.employee_file.present? %>
+          <strong>Vi tri: </strong> <%=  @employee.employee_file.position %><br/>
+        <% else %>
+        <% end %>
+        <% if @employee.department.present? %>
+          <strong>Phòng ban: </strong> <%= @employee.department.name %><br/>
+        <% end %>
+        <strong>Role: </strong> <%= @employee.role_id%><br/>
+        <strong>Ngày vào công ty: </strong> <%= @employee.created_at.strftime("%d/%m/%Y") %><br/>
+      </div>
+    </div>
+    <%= link_to 'Quay lại', {:action => 'list'} %>
+  </div>
+
+</div>

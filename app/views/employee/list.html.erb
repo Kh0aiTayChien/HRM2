@@ -27,7 +27,8 @@
         <% else %>
           <td>
             <%= link_to '📝', { :action => 'edit', :id => c.id } %>
-          <%= link_to "🗑", { :action => 'delete', :id => c.id } %>
+          <%= link_to "🗑", { :action => 'delete', :id => c.id }, data: { "turbo-method": :delete,
+                                                                          turbo_confirm: "Bạn có chắc không?" }  %>
           </td>
         <% end %>
       </tr>

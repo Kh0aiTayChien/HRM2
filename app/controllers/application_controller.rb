@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :employee_not_authorized
 

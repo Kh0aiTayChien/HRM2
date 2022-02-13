@@ -1,22 +1,33 @@
-<h1>Thêm nhan vien vao du an </h1>
+<h1 align="center">Thêm nhân viên vào dự án mới </h1>
+
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-4" style="margin-top: 10%">
+    <div class="card">
     <%= form_tag :action => 'create' do %>
       <%#= render 'shared/validate_epl_prj' %>
-      <label for="0">Chon nhan vien</label>:
+      <label for="0">Chọn Nhân Viên Mới cho Dự Án </label>:
+      <br>
       <%= collection_select(:employee_project, :employee_id, Employee.all, :id, :name, prompt: true) %>
       <br>
       <label for="2">Vai tro </label>:
+      <br>
       <%= select(:employee_project, :is_leader, [['Truong Du An', 1], ['Nhan Vien', 0]]) %>
       <br>
-      <label for="1">Ngay vao du an</label>:
+      <label for="1">Ngày Vào Dự Án</label>:
       <%= date_field 'employee_project', 'time_assign', class: 'form-control' %>
 
       <%= hidden_field 'employee_project', 'project_id', class: 'form-control', value:@project.id %>
       <br>
       <%= submit_tag "Lưu", class: 'btn btn-primary',:id => @project.id %>
     <% end -%>
-    <%= link_to 'Quay lại', { :action => 'index', :id => @project.id } %>
+    <%= link_to 'Quay lại', :action => 'index', :id => @project.id ,:class=> "btn btn-lg btn-primary" %>
+      <%= @employees_project.errors.full_messages.first if @employees_project.errors.any? %>
+  </div>
+  </div>
+  <div class="col-8">
+    <input id="" type="image"
+           src="https://lh3.googleusercontent.com/Ks1AiJ6wtwy-wUE7xqkABD3GZGeNhpyrR8yRHs_idbS2QQkiMQOVP8UycDGpZ2thUAdP4pUVZdZZVYEP5lnFbfgSaCBn11yKGMo10bkbWbNqNykMvjcbwwTAUGNLIo82PjcRE4zf6A=w800"
+      />
   </div>
 </div>
 <script>$('#employee_project_employee_id').select2()</script>

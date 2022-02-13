@@ -1,14 +1,30 @@
-<h2>Phòng ban của bạn:
-  <% if current_user.employee.present? %>
-    <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h2>
+<h1 align="center"> THÔNG TIN TỔNG QUAN </h1>
+<div class="row">
+  <div class="col-4" style="margin-top: 10%">
+    <div class="card">
+      <div class="card-body">
+<h4>Phòng ban của bạn:
+  <% if current_user.employee.department.present? %>
+    <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h4>
   <% else %>
-    ...
+    <h6 style="color: silver">Bạn đang vô gia cư </h6>
   <% end %>
-  <h2>Dự án của bạn:
-    <% if current_user.employee.present? %>
+  <h4>Các dự án bạn tham gia:
+    <br>
+    <% if current_user.employee.employee_projects.present? %>
       <% current_user.employee.employee_projects.each do |c| %>
-        <%= link_to c.project.name, prj_show_path(:id => c.project.id) %></h2>
+        <%= link_to c.project.name, prj_show_path(:id => c.project.id) %></h4>
       <% end %>
     <% else %>
-      <h6 style="color: silver">hiện tại chưa có</h6>
+      <h6 style="color: silver">Bạn hiện tại chưa có dự án nào </h6>
     <% end %>
+
+    </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <input id="" type="image"
+           src="https://lh3.googleusercontent.com/Ks1AiJ6wtwy-wUE7xqkABD3GZGeNhpyrR8yRHs_idbS2QQkiMQOVP8UycDGpZ2thUAdP4pUVZdZZVYEP5lnFbfgSaCBn11yKGMo10bkbWbNqNykMvjcbwwTAUGNLIo82PjcRE4zf6A=w800"
+      />
+    </div>
+    </div>

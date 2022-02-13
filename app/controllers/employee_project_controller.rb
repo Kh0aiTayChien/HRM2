@@ -20,13 +20,14 @@ class EmployeeProjectController < ApplicationController
 
     # @project = Project.find(params[:id])
 
-    respond_to do |format|
-      if @employees_project.save!
 
+      if @employees_project.save!
+        flash.now[:success] = "Da them nguoi moi thanh cong"
+        redirect_to employee_project_index_path(id: @employees_project.project_id)
       else
-        format.html { render :new, status: :unprocessable_entity }
+
+       render :new, status: :unprocessable_entity
       end
-    end
   end
 
   def project_employee_params
@@ -47,7 +48,7 @@ class EmployeeProjectController < ApplicationController
     @employees_project = EmployeeProject.find(params[:id])
     respond_to do |format|
       if @employees_project.update(update_param)
-        format.html { redirect_to employee_project_index_patch, notice: "Cập nhật thong tin thành công." }
+        format.html { redirect_to employee_project_index_path(id: @employees_project.project_id), notice: "Cập nhật thong tin thành công." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

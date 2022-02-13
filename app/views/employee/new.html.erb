@@ -1,6 +1,6 @@
-<h1>Thêm nhân viên</h1>
+<h1 align="center" style="margin-top: 2%">Thêm nhân viên mới vào hệ thống </h1>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-4 " style="margin-top: 2%">
 
     <%= form_with(model: @employee, url: epl_create_path, local: true) do |form| %>
       <%= render 'shared/validate_epl' %>
@@ -19,24 +19,33 @@
       </div>
       <div class="field">
         <%= form.label 'Ngày sinh' %>
-        <%= form.text_field :birthday, class: 'form-control' %>
+        <%= form.date_field :birthday, class: 'form-control' %>
       </div>
       <div class="field">
         <%= form.label 'Email' %>
+        <br>
         <%= collection_select(:employee, :user_id, User.all, :id, :email, prompt: true) %>
       </div>
       <div class="field">
-        <%= form.label 'Role' %>
-        <%= collection_select(:employee, :role_id, Role.all, :name, :id,  prompt: true) %> (1=admin, 2=hr, 3=leader, 4=user)
+        <%= form.label 'Vai trò' %>
+        <br>
+        <%= collection_select(:employee, :role_id, Role.all, :name, :id,  prompt: true) %>
+        <br>
+        (1=admin, 2=hr, 3=leader, 4=user)
       </div>
       <div class="field">
         <%= form.label 'Phòng ban' %>
+        <br>
         <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %>
       </div>
       <div class="field">
         <%= form.label 'Trưởng phòng' %>
-        <%= form.text_field :is_pm, class: 'form-control' %>
+        <br>
+        <%= select(:employee, :is_pm, [['Truong Phòng', 1], ['Nhan Vien', 0]]) %>
       </div>
+      <%= form.label 'Phòng ban' %>
+      <br>
+      <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %>
       <div class="field">
         <%= form.fields_for :employee_file do |ff| %>
           <%= ff.label 'Chức vụ' %>
@@ -45,7 +54,18 @@
       </div>
       <br>
       <%= form.submit 'Lưu thay đổi', class: 'btn btn-success' %>
+      <button class="btn-dark">
+        <%= link_to 'Quay lại', { :action => 'list' } %>
+      </button>
     <% end %>
-    <%= link_to 'Quay lại', { :action => 'list' } %>
+
+  </div>
+  <div class="col-8 ">
+    <input id="" type="image"
+           src="https://lh3.googleusercontent.com/Ks1AiJ6wtwy-wUE7xqkABD3GZGeNhpyrR8yRHs_idbS2QQkiMQOVP8UycDGpZ2thUAdP4pUVZdZZVYEP5lnFbfgSaCBn11yKGMo10bkbWbNqNykMvjcbwwTAUGNLIo82PjcRE4zf6A=w800"
+          />
   </div>
 </div>
+<script>$('#employee_user_id').select2()</script>
+<script>$('#employee_department_id').select2()</script>
+

@@ -9,7 +9,7 @@ class ProjectController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def new
+def new
     @project = Project.new
     authorize @project
   end
