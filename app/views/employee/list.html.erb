@@ -9,8 +9,9 @@
       <th>Tên</th>
       <th>Role</th>
       <th>Email</th>
-      <% if current_user.employee.role_id == 'admin' %>
-      <th colspan="2">Tuỳ chọn</th>
+      <%# if current_user.employee.role_id == 'admin' %>
+        <% if policy(:employee).edit? %>
+    <th colspan="2">Tuỳ chọn</th>
         <% end %>
     </tr>
     <% @employees.each_with_index do |c, index| %>
@@ -23,9 +24,10 @@
         <% else %>
           <td>khong co</td>
         <% end %>
-        <% if c.id == 1 || current_user.employee.role_id != 'admin' %>
-        <% else %>
-          <td>
+        <%# if c.id == 1 || current_user.employee.role_id != 'admin' %>
+        <%# else %>
+        <% if policy(:employee).edit? %>
+      <td>
             <%= link_to '📝', { :action => 'edit', :id => c.id } %>
           <%= link_to "🗑", { :action => 'delete', :id => c.id }, data: { "turbo-method": :delete,
                                                                           turbo_confirm: "Bạn có chắc không?" }  %>

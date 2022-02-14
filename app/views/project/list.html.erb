@@ -8,8 +8,9 @@
       <th>Tên</th>
       <th>Mô tả</th>
       <th>Phòng ban đảm nhận</th>
-      <% if current_user.employee.role_id == 'admin' %>
-      <th colspan="2">Tuỳ chọn</th>
+      <%# if current_user.employee.role_id == 'admin' %>
+      <% if policy(:project).edit? %>
+    <th colspan="2">Tuỳ chọn</th>
         <% end %>
     </tr>
     <% @projects.each_with_index do |c, index| %>
@@ -19,8 +20,9 @@
         <td><%= c.description %></td>
         <td><%= c.department.name %></td>
         <td>
-          <% if current_user.employee.role_id == 'admin' %>
-            <%= link_to '📝', { :action => 'edit', :id => c.id } %>
+          <%# if current_user.employee.role_id == 'admin' %>
+          <% if policy(:project).edit? %>
+        <%= link_to '📝', { :action => 'edit', :id => c.id } %>
             <%= link_to "🗑", { :action => 'delete', :id => c.id } %>
           <% end %>
         </td>

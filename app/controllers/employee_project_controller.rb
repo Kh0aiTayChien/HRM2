@@ -3,6 +3,7 @@ class EmployeeProjectController < ApplicationController
   layout 'dashboard'
   def index
     @project = Project.find(params[:id])
+    # authorize @project
     @employees = EmployeeProject.where(:project_id => @project.id)
   end
 

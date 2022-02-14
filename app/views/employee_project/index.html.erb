@@ -18,7 +18,7 @@
         <td><%= index + 1 %></td>
         <td><%= c.employee.name %></td>
         <td><%= c.time_assign %></td>
-        <% if current_user.employee.role_id == "admin" || current_user.employee.role_id == 'leader' %>
+        <% if current_user.employee.role_id == "admin" || current_user.employee.role_id == 'leader' || current_user.employee.is_pm == 0 %>
         <td>
           <%= link_to '📝', { :action => 'edit', :id => c.id } %>
           <%= link_to "🗑", { :action => 'destroy', :id => c.id }, data: { "turbo-method": :delete,
@@ -29,6 +29,6 @@
     <% end %>
   </table>
 <% end %>
-<% if  current_user.employee.role_id == 'admin' || current_user.employee.role_id == 'leader'  %>
+<% if  current_user.employee.role_id == 'admin' || current_user.employee.role_id == 'leader' || current_user.employee.is_pm == 0 %>
 <p><%= link_to "➕", { :action => 'new', :id => @project.id } %></p>
 <% end %>

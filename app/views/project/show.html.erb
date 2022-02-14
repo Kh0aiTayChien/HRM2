@@ -1,5 +1,5 @@
 <h1 align="center"> Tên dự án: <%= @project.name %></h1>
-<% if  current_user.employee.role_id == 'admin' || current_user.employee.role_id == 'leader'  %>
+<% if  current_user.employee.role_id == 'admin' || current_user.employee.role_id == 'leader' || current_user.employee.is_pm == 0 %>
 <button class="btn-light"><%= link_to "Quản lý nhân viên", {:controller => "employee_project", action: 'index', :id => @project.id } %></button>
   <% end %>
 <br/>
@@ -10,6 +10,12 @@
 <p>
   <div class="row">
 <div class="col-4">
+<!--  <strong>truong du an : </strong>-->
+<!--  <br>-->
+  <%# if @project.employee_projects.is_leader == 1 %>
+<!--  <%#= @project.employee_projects.employee.name %><br />-->
+    <%# end %>
+<!--  <br>-->
   <strong>Mô tả vệ dự án : </strong>
   <br>
   <%= @project.description %><br />

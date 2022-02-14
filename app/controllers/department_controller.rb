@@ -7,7 +7,7 @@ class DepartmentController < ApplicationController
 
   def show
     @dpm = Department.find(params[:id])
-    @pm = Employee.find_by(is_pm: "1",department_id: @dpm )
+    @pm = Employee.find_by(is_pm: "0",department_id: @dpm )
 
 
     puts @pm.inspect
