@@ -29,9 +29,8 @@
       <div class="field">
         <%= form.label 'Vai trò' %>
         <br>
-        <%= collection_select(:employee, :role_id, Role.all, :name, :id,  prompt: true) %>
+        <%= collection_select(:employee, :role_id, Role.all, :name, :name,  prompt: true) %>
         <br>
-        (1=admin, 2=hr, 3=leader, 4=user)
       </div>
       <div class="field">
         <%= form.label 'Phòng ban' %>
@@ -43,9 +42,6 @@
         <br>
         <%= select(:employee, :is_pm, [['Truong Phòng', 0], ['Nhan Vien', 1]]) %>
       </div>
-      <%= form.label 'Phòng ban' %>
-      <br>
-      <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %>
       <div class="field">
         <%= form.fields_for :employee_file do |ff| %>
           <%= ff.label 'Chức vụ' %>

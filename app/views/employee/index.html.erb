@@ -7,7 +7,7 @@
   <% if current_user.employee.department.present? %>
     <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h4>
   <% else %>
-    <h6 style="color: silver">Bạn đang vô gia cư </h6>
+    <h6 style="color: silver">Bạn đang không ở trong phòng</h6>
   <% end %>
   <h4>Các dự án bạn tham gia:
     <br>

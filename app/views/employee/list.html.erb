@@ -29,8 +29,10 @@
         <% if policy(:employee).edit? %>
       <td>
             <%= link_to '📝', { :action => 'edit', :id => c.id } %>
+        <% if c.role_id != 'admin' %>
           <%= link_to "🗑", { :action => 'delete', :id => c.id }, data: { "turbo-method": :delete,
                                                                           turbo_confirm: "Bạn có chắc không?" }  %>
+          <% end %>
           </td>
         <% end %>
       </tr>

@@ -19,9 +19,9 @@
       <p>Email:
         <%= f.collection_select :user_id, User.all, :id, :email %></p>
       <p> Vai trò :
-        <%= f.collection_select :role_id, Role.all, :name, :id %> (1=admin, 2=hr, 3=leader, 4=user)</p>
+        <%= f.collection_select :role_id, Role.all, :name, :name %></p>
       <p>Phòng ban:
-      <%= collection_select(:employee, :department_id, Department.all, :id, :name, prompt: true) %>
+      <%= f.collection_select :department_id, Department.all, :id, :name, prompt: true %>
         <br>
         <br>
       <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>

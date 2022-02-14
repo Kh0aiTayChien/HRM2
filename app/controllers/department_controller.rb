@@ -7,12 +7,6 @@ class DepartmentController < ApplicationController
 
   def show
     @dpm = Department.find(params[:id])
-    @pm = Employee.find_by(is_pm: "0",department_id: @dpm )
-
-
-    puts @pm.inspect
-
-    @count= Employee.where(department_id: @dpm).count
   end
 
   def new
@@ -31,18 +25,11 @@ class DepartmentController < ApplicationController
     end
   end
 
-  def dpm_params
-    params.require(:departments).permit(:name, :description)
-  end
-
   def edit
     @dpm = Department.find(params[:id])
     authorize @dpm
   end
 
-  def dpm_param
-    params.require(:department).permit(:name, :description)
-  end
 
   def update
     @dpm = Department.find(params[:id])
@@ -71,4 +58,16 @@ class DepartmentController < ApplicationController
   def show_epl
     @employee = Employee.find(param[:id])
   end
+
+  private
+
+  def dpm_params
+    params.require(:departments).permit(:name, :description)
+  end
+
+  def dpm_param
+    params.require(:department).permit(:name, :description)
+  end
+
+
 end

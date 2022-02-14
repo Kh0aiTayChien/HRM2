@@ -10,13 +10,12 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
-
 <div class="container-fluid">
-  <nav class="navbar navbar-expand-lg  fixed-top" style="background-color:#0BD48A;">
+  <nav class="navbar navbar-expand-lg  fixed-top", style="background-color: aliceblue">
     <div class="container-fluid">
       <%= link_to 'Trang chủ', authenticated_root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,36 +24,41 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <% if policy(:user).list? %>
-        <li class="nav-item">
-            <%= link_to 'Dự án', prj_list_path, class: "nav-link active" %>
-          </li>
-            <% end %>
-          <li class="nav-item">
-            <%= link_to 'Phòng ban', dpms_list_path, class: "nav-link active" %>
-          <li class="nav-item">
-            <%= link_to 'Nhân viên', epl_list_path, class: "nav-link active" %>
-          </li>
+            <li class="nav-item">
+              <%= link_to 'Dự án', prj_list_path, class: "nav-link active" %>
+            </li>
+          <% end %>
+          <% if policy(:department).list? %>
+            <li class="nav-item">
+              <%= link_to 'Phòng ban', dpms_list_path, class: "nav-link active" %>
+            </li>
+          <% end %>
+          <% if policy(:employee).list? %>
+            <li class="nav-item">
+              <%= link_to 'Nhân viên', epl_list_path, class: "nav-link active" %>
+            </li>
+          <% end %>
           <% if policy(:user).list? %>
-        <li class="nav-item">
-            <%= link_to 'Tài khoản', user_list_path, class: "nav-link active" %>
-          </li>
-            <% end %>
+            <li class="nav-item">
+              <%= link_to 'Tài khoản', user_list_path, class: "nav-link active" %>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
-            <span class="nav-link nav-link dropdown-toggle navbarDropdown "  role="button" data-toggle="dropdown" aria-expanded="false">
-              <% if current_user.employee.present?  %>
-              Xin chào <%= current_user.employee.name%>
+            <span class="nav-link nav-link dropdown-toggle navbarDropdown " role="button" data-toggle="dropdown" aria-expanded="false">
+              <% if current_user.employee.present? %>
+              Xin chào <%= current_user.employee.name %>
                 <% else %>
               <p>Bạn cần điền đầy đủ thông tin cho email này</p>
                 <% end %>
             </span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Thong tin ca nhan", epl_info_path, class: "dropdown-item" %>
-              <%= link_to "Doi mat khau", change_pw_path  ,class: "dropdown-item" %>
+              <%= link_to "Doi mat khau", change_pw_path, class: "dropdown-item" %>
               <%= link_to "Dang xuat", sign_out_path, class: "dropdown-item" %>
             </div>
-<!--          <li class="nav-item">-->
+            <!--          <li class="nav-item">-->
             <%#= link_to 'Đăng Kí', sign_up_path, class: "nav-link active" %>
-<!--          </li>-->
+            <!--          </li>-->
           </li>
         </ul>
       </div>
@@ -65,14 +69,20 @@
 </div>
 
 <div class="container" style="margin-top: 5%">
+  <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+  <% end %>
   <%= yield %>
 </div>
-<footer class="text-center text-white fixed-bottom" style="background-color: #00EBD8;">
+<footer class="text-center text-white fixed-bottom">
 
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color:#0BD48A;">
-    © 2020 Copyright:
-    <a class="text-white" href="https://bnksolution.com/">Bnk Solution - Phần mềm quản lý nhân sự Version 0.1</a>
+  <div class="text-center p-3" style="background-color: aliceblue">
+    <a class="text-blue" href="https://bnksolution.com/">© 2020 Copyright: Bnk Solution - Phần mềm quản lý nhân sự Version 0.1</a>
   </div>
   <!-- Copyright -->
 </footer>
