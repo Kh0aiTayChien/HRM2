@@ -22,7 +22,7 @@
           <% if c.name.blank? %>
             <p>khong co</p>
           <% else %>
-            <li><%= link_to c.name, prj_show_path(:id => c.id ) %></li>
+            <li><%= link_to c.name, projects_path(:id => c.id ) %></li>
           <% end %>
         <% end %>
         <br>

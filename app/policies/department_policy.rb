@@ -6,7 +6,7 @@ class DepartmentPolicy < ApplicationPolicy
     @department = department
   end
 
-  def list?
+  def index?
     user.employee.admin? || user.employee.hr? || user.employee.leader?
   end
 
@@ -18,7 +18,7 @@ class DepartmentPolicy < ApplicationPolicy
     user.employee.admin?
   end
 
-  def delete?
+  def destroy?
     user.employee.admin?
   end
 

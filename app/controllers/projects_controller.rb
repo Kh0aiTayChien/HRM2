@@ -1,6 +1,6 @@
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
   layout 'dashboard'
-  def list
+  def index
     @projects = Project.all
     authorize @projects
   end
@@ -18,7 +18,7 @@ def new
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to prj_list_url, notice: "Thêm dự án thành công." }
+        format.html { redirect_to projects_path, notice: "Thêm dự án thành công." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -42,19 +42,19 @@ def new
     @project = Project.find(params[:id])
     respond_to do |format|
       if @project.update(project_param)
-        format.html { redirect_to prj_list_url, notice: "Cập nhật dự án thành công." }
+        format.html { redirect_to project_path notice: "Cập nhật dự án thành công." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
 
-  def delete
+  def destroy
     respond_to do |format|
       @prj = Project.find(params[:id])
       authorize @prj
       @prj.destroy
-      format.html { redirect_to prj_list_url, notice: "Xoá dự án thành công." }
+      format.html { redirect_to projects_path, notice: "Xoá dự án thành công." }
     end
   end
 end

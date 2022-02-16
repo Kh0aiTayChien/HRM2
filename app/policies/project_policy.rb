@@ -6,7 +6,7 @@ class ProjectPolicy < ApplicationPolicy
     @project = project
   end
 
-  def list?
+  def index?
     user.employee.admin?
   end
 
@@ -18,7 +18,7 @@ class ProjectPolicy < ApplicationPolicy
     user.employee.admin?
   end
 
-  def delete?
+  def destroy?
     user.employee.admin?
   end
 

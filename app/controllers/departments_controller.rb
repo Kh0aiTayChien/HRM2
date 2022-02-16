@@ -1,6 +1,6 @@
-class DepartmentController < ApplicationController
+class DepartmentsController < ApplicationController
   layout 'dashboard'
-  def list
+  def index
     @dpms = Department.all
     authorize @dpms
   end
@@ -18,7 +18,7 @@ class DepartmentController < ApplicationController
     @dpm = Department.new(dpm_params)
     respond_to do |format|
       if @dpm.save
-        format.html { redirect_to dpms_list_url, notice: "Thêm phòng ban thành công." }
+        format.html { redirect_to departments_path, notice: "Thêm phòng ban thành công." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -35,19 +35,19 @@ class DepartmentController < ApplicationController
     @dpm = Department.find(params[:id])
     respond_to do |format|
       if @dpm.update(dpm_param)
-        format.html { redirect_to dpms_list_url, notice: "Cập nhật phòng ban thành công." }
+        format.html { redirect_to department_index_path, notice: "Cập nhật phòng ban thành công." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
 
-  def delete
+  def destroy
     respond_to do |format|
       @dpm = Department.find(params[:id])
       authorize @dpm
       @dpm.destroy
-      format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
+      format.html { redirect_to departments_path, notice: "Xoá phòng ban thành công." }
     end
   end
 

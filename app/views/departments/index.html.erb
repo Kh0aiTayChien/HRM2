@@ -26,8 +26,7 @@
           <% if policy(:department).edit? %>
             <td>
               <%= link_to '📝', { :action => 'edit', :id => c.id } %>
-              <%= link_to "🗑", { :action => 'delete', :id => c.id },data: { "turbo-method": :delete,
-                                                                             turbo_confirm: "Bạn có chắc không?" } %>
+              <%= link_to "🗑", { :action => 'destroy', :id => c.id }, data: { "turbo-method": :delete, turbo_confirm: "Bạn có chắc không?" } %>
             </td>
           <% end %>
         <%# end %>

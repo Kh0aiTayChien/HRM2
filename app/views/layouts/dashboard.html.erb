@@ -25,12 +25,12 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <% if policy(:user).list? %>
             <li class="nav-item">
-              <%= link_to 'Dự án', prj_list_path, class: "nav-link active" %>
+              <%= link_to 'Dự án', projects_path, class: "nav-link active" %>
             </li>
           <% end %>
-          <% if policy(:department).list? %>
+          <% if policy(:department).index? %>
             <li class="nav-item">
-              <%= link_to 'Phòng ban', dpms_list_path, class: "nav-link active" %>
+              <%= link_to 'Phòng ban', departments_path, class: "nav-link active" %>
             </li>
           <% end %>
           <% if policy(:employee).list? %>

@@ -25,7 +25,7 @@
         <br>
         <br>
       <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
-      <button class="btn-dark"><%= link_to 'Quay lại', { :action => 'list' } %></button>
+      <button class="btn-dark"><%= link_to 'Quay lại', { :action => 'index' } %></button>
     <% end %>
 
   </div>
@@ -35,5 +35,5 @@
       />
   </div>
 </div>
-    <script>$('#employee_user_id').select2()</script>
-    <script>$('#employee_department_id').select2()</script>
+    <script>$('#employees_user_id').select2()</script>
+    <script>$('#employees_department_id').select2()</script>

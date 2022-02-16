@@ -4,14 +4,14 @@
     <div class="card">
       <div class="card-body">
 <h4>Phòng ban của bạn:
-  <% if current_user.employee.department.present? %>
+  <% if current_user.employee&.department.present? %>
     <%= link_to current_user.employee.department.name, dpms_show_path(:id => current_user.employee.department.id) %> </h4>
   <% else %>
     <h6 style="color: silver">Bạn đang không ở trong phòng</h6>
   <% end %>
   <h4>Các dự án bạn tham gia:
     <br>
-    <% if current_user.employee.employee_projects.present? %>
+    <% if current_user.employee&.employee_projects.present? %>
       <% current_user.employee.employee_projects.each do |c| %>
         <%= link_to c.project.name, prj_show_path(:id => c.project.id) %></h4>
       <% end %>

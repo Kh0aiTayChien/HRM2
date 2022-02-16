@@ -9,6 +9,6 @@
       <p>Phòng ban: <%= f.collection_select :department_id, Department.all, :id, :name %></p>
       <%= f.submit "Lưu thay đổi", class: 'btn btn-primary' %>
     <% end %>
-    <%= link_to 'Quay lại', { :action => 'list' } %>
+    <%= link_to 'Quay lại', { :action => 'index' } %>
   </div>
 </div>

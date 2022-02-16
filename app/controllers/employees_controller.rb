@@ -1,15 +1,16 @@
-class EmployeeController < ApplicationController
+class EmployeesController < ApplicationController
   before_action :authenticate_user!
 
   layout 'dashboard'
 
-  def index
+  def page
+
   end
 
   def info
   end
 
-  def list
+  def index
     @employees = Employee.all
     authorize @employees
   end
@@ -75,7 +76,7 @@ class EmployeeController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     respond_to do |format|
       @epl = Employee.find(params[:id])
       authorize @epl
